@@ -58,10 +58,8 @@ class VerifyEmail(views.APIView):
     @swagger_auto_schema(manual_parameters=[token_param_config])
     def get(self, request):
         token = request.GET.get('token')
-        print('token', token)
         try:
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms='HS256')
-            print('payload', payload)
             user = User.objects.get(id=payload['user_id'])
             if not user.is_verified:
                 user.is_verified = True
@@ -78,9 +76,6 @@ class LoginAPIView(generics.GenericAPIView):
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        
-        env_variable = os.getenv('GOOGLE_CLIENT_ID')
-        print(env_variable)
         
         return Response(serializer.data, status=status.HTTP_200_OK)
     

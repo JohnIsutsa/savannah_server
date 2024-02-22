@@ -44,7 +44,6 @@ def register_social_user(provider, user_id, email, name):
         user.save()
         
         new_user = authenticate(email=email, password=os.environ.get('SOCIAL_SECRET'))
-        print('NEW USER', new_user)
         
         return {
             'email': new_user.email,
