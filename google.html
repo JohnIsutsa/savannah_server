@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with Google</title>
+</head>
+<body>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <h1>Login with Google</h1>
+    <div id="g_id_onload" 
+        class="g-signin2"
+        data-client_id="775171315474-fedkve68pgsi0d3cqn9ut22cb1riq2b8.apps.googleusercontent.com" 
+        data-callback="onSignIn">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+
+    <script>
+        function onSignIn(googleUser) {
+            console.log('I ran', googleUser)
+
+            console.log('Credential', googleUser.credential)
+            // var profile = googleUser.getBasicProfile();
+            // var id_token = googleUser.getAuthResponse().id_token;
+            // // Send the id_token to your backend server for verification
+            // console.log('ID Token: ' + id_token);
+            // // You can send the token to your backend using AJAX or any other method
+        }
+    </script>
+</body>
+</html>
+<!-- https://accounts.google.com/gsi/select?client_id=775171315474-0su7hrjbc3m1iusp3ug1sf6orro58if5.apps.googleusercontent.com&ux_mode=popup&ui_mode=bottom_sheet&as=6OiWDcYZzHhjhfNY0ZDDMw&channel_id=034b5291d33b127e91dac5de533ab67386d251fe4c1e671ef1ef17815a697a6a&origin=http%3A%2F%2F127.0.0.1%3A5500 -->
